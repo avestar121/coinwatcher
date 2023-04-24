@@ -19,7 +19,7 @@ function Trending() {
     const [checked, setChecked] = useState(false);
     return (
         <div className="text-white">
-        <div className={styles.trendingWrapper}>
+        <div className={styles.trendingWrapper} id='Wrapper'>
             <div className="flex justify-between">
                 <h1 className={styles.h1}>Todays Cryptocurrency Prices by Market Cap</h1>
 
