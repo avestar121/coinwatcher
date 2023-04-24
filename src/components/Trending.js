@@ -12,7 +12,7 @@ import {Rate} from '../components/cmc-table/Rate'
 const styles = {
     trendingWrapper: `mx-auto max-w-screen-2xl mx-[5rem]`,
     h1: `text-3xl text-white`,
-    flexCenter: `flex items-center,`
+    flexCenter: `flex items-center`,
 }
 
 function Trending() {
