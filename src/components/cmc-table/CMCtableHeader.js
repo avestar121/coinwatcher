@@ -1,6 +1,6 @@
 import React from 'react'
 import ChevronDown from '@/assets/svg/chevronDown'
-import Info from '@/assets/svg/Info'
+import Info from '@/assets/svg/info'
 
 const styles = {
   textIcon: `flex items-center`
