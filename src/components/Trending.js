@@ -6,6 +6,7 @@ import gainers from '../assets/gainers.png'
 import recent from '../assets/recent.png'
 import ReactSwitch from 'react-switch'
 import {Rate} from '../components/cmc-table/Rate'
+import TrendingCard from './TrendingCard'
 
 
 
@@ -14,6 +15,34 @@ const styles = {
     h1: `text-3xl text-white`,
     flexCenter: `flex items-center`,
 }
+
+
+const trendingData = [
+  {
+    number:1,
+    symbol:"BTC",
+    name:"Bitcoin",
+    icon: btc,
+    isIncrement: true,
+    rate: "2.34"
+  },
+  {
+    number:2,
+    symbol:"USDT",
+    name:"Tether",
+    icon: usdt,
+    isIncrement: false,
+    rate: "9.23"
+  },
+  {
+    number:3,
+    symbol:"BTC",
+    name:"Bitcoin",
+    icon: btc,
+    isIncrement: true,
+    rate: "2.34"
+  }
+]
 
 function Trending() {
     const [checked, setChecked] = useState(false);
@@ -37,14 +66,12 @@ function Trending() {
             <br />
     
             <div className={styles.flexCenter}>
-              {/*
               <TrendingCard title='Trending' icon={fire}
               trendingData ={trendingData} />
                <TrendingCard title='Biggest Gainers' icon={gainers}
               trendingData ={trendingData} />
                <TrendingCard title='Recently Added' icon={recent}
               trendingData ={trendingData} />
-              */}
             </div>
           </div>
         </div>
