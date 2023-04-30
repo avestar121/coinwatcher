@@ -18,7 +18,7 @@ const styles = {
     flexCenter: `flex items-center`
 }
 
-function info() {
+function Info() {
     
   const [coinName, setCoinName] = useState('')
   const [coinSymbol, setCoinSymbol]= useState('')
@@ -103,4 +103,4 @@ function info() {
   )
 }
 
-export default info
+export default Info
