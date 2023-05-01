@@ -7,13 +7,13 @@ import 'chartjs-adapter-moment';
 import { LineController, TimeScale, LinearScale, LineElement, Tooltip } from 'chart.js';
 Chart.register(LineController, TimeScale, LinearScale, LineElement, Tooltip);
 
-export default function Home({symbol, width, height}) {
+export default function SmallGraph({symbol, width, height}) {
   const canvasRef = useRef(null);
   const [chart, setChart] = useState(null);
 
   useEffect(() => {
     const apiUrl = 'https://api.binance.com/api/v3/klines';
-    const interval = '1d';
+    const interval = '30m';
 
     axios.get(`${apiUrl}?symbol=${symbol}&interval=${interval}`)
       .then(response => {
@@ -29,7 +29,8 @@ export default function Home({symbol, width, height}) {
             datasets: [{
               label: `${symbol} Price`,
               data: prices,
-              borderColor: 'blue',
+              borderColor: '#17C784',
+              borderWidth: 1.5,
               fill: false,
               pointRadius: 0 
             }]
@@ -45,17 +46,29 @@ export default function Home({symbol, width, height}) {
                   }
                 },
                 ticks: {
-                  source: 'auto',
-                  maxRotation: 0,
-                  autoSkip: true,
-                },
+                    source: 'auto',
+                    maxRotation: 0,
+                    autoSkip: true,
+                    display: false,
+                  },
               },
               y: {
-                beginAtZero: true
+                beginAtZero: false,
+                ticks: {
+                    source: 'auto',
+                    maxRotation: 0,
+                    autoSkip: true,
+                    display: false,
+                  },
               }
             },
             responsive: true,
-            maintainAspectRatio: false
+            maintainAspectRatio: false,
+            plugins: {
+              legend: {
+                display: false
+              }
+            }
           }
           
         });
@@ -68,8 +81,7 @@ export default function Home({symbol, width, height}) {
 
   return (
     <div>
-      <canvas ref={canvasRef} width={750} height={400}></canvas>
+      <canvas ref={canvasRef} width={30} height={50}></canvas>
     </div>
   );
 }
-

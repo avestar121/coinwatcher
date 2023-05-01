@@ -4,7 +4,6 @@ import eth from '../../assets/eth.png'
 import {CoinMarketContext} from '../../contex/contex'
 import CMCtableHeader from './CMCtableHeader'
 import CMCtableRow from './CMCTableRow'
-import chart from '../../components/Graph'
 
 
 

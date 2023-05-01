@@ -5,6 +5,7 @@ import Star from '../../assets/svg/star'
 import {Rate} from './Rate'
 import { useRouter } from 'next/router'
 import CoinNameRow from './CoinNameRow'
+import SmallGraph from '../SmallGraph'
 
 const styles = {
     tableRow: `text-white border-b border-gray-800 text-[0.93rem]`
@@ -26,21 +27,36 @@ const CMCtableRow = ({
     circulatingSupply = '---',
 }) => {
 
-    const graphImages = [
-        'https://s3.coinmarketcap.com/generated/sparklines/web/7d/2781/52.svg',
-        'https://s3.coinmarketcap.com/generated/sparklines/web/7d/2781/1.svg',
-        'https://s3.coinmarketcap.com/generated/sparklines/web/7d/2781/825.svg',
-        'https://s3.coinmarketcap.com/generated/sparklines/web/7d/2781/3408.svg',
-        'https://s3.coinmarketcap.com/generated/sparklines/web/7d/2781/5426.svg',
-        'https://s3.coinmarketcap.com/generated/sparklines/web/7d/2781/7129.svg',
-        'https://s3.coinmarketcap.com/generated/sparklines/web/7d/2781/3957.svg',
-        'https://s3.coinmarketcap.com/generated/sparklines/web/7d/2781/328.svg',
-        'https://s3.coinmarketcap.com/generated/sparklines/web/7d/2781/2416.svg',
-        'https://s3.coinmarketcap.com/generated/sparklines/web/7d/2781/1765.svg',
-        'https://s3.coinmarketcap.com/generated/sparklines/web/7d/2781/2099.svg',
-        'https://s3.coinmarketcap.com/generated/sparklines/web/7d/2781/7653.svg',
-        
-    ]
+    let symbol;
+    switch (coinName) {
+        case 'Bitcoin':
+            symbol = 'BTCUSDT';
+            break;
+        case 'Ethereum':
+            symbol = 'ETHUSDT';
+            break;
+        case 'BNB':
+                symbol = 'BNBUSDT';
+                break;
+        case 'XRP':
+            symbol = 'XRPUSDT';
+            break;
+        case 'Cardano':
+            symbol = 'ADAUSDT';
+            break;
+        case 'Dogecoin':
+                symbol = 'DOGEUSDT';
+                break;
+        case 'Polygon':
+                symbol = 'MATICUSDT';
+                break;
+        case 'Solana':
+                symbol = 'SOLUSDT';
+                break;
+        default:
+            symbol = 'USDCUSDT'; // default to USDT if symbol is unknown
+            break;
+    }
 
     const getRandomGraph = () => {
         const rndInt = Math.floor(Math.random() * 10) + 1
@@ -114,7 +130,9 @@ const CMCtableRow = ({
                 </div>
             </td>
             <td>
-                <Image src={getRandomGraph()} width={150} height={60} alt='graph'/>
+                <div style={{width: '10rem', height: '30px'}}>
+                    <SmallGraph symbol={symbol}/>
+                </div>
             </td>
 
             <td>
