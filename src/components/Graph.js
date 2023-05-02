@@ -7,13 +7,13 @@ import 'chartjs-adapter-moment';
 import { LineController, TimeScale, LinearScale, LineElement, Tooltip } from 'chart.js';
 Chart.register(LineController, TimeScale, LinearScale, LineElement, Tooltip);
 
-export default function Home({symbol, width, height}) {
+export default function Graph({symbol, activeTab}) {
   const canvasRef = useRef(null);
   const [chart, setChart] = useState(null);
 
   useEffect(() => {
     const apiUrl = 'https://api.binance.com/api/v3/klines';
-    const interval = '1d';
+    const interval = activeTab;
 
     axios.get(`${apiUrl}?symbol=${symbol}&interval=${interval}`)
       .then(response => {
@@ -22,6 +22,12 @@ export default function Home({symbol, width, height}) {
         const labels = data.map(datum => new Date(datum[0]));
 
         const ctx = canvasRef.current.getContext('2d');
+
+        // Clean up any existing chart instance
+        if (chart) {
+          chart.destroy();
+        }
+
         const newChart = new Chart(ctx, {
           type: 'line',
           data: {
@@ -51,7 +57,7 @@ export default function Home({symbol, width, height}) {
                 },
               },
               y: {
-                beginAtZero: true
+                beginAtZero: false
               }
             },
             responsive: true,
@@ -64,7 +70,14 @@ export default function Home({symbol, width, height}) {
       .catch(error => {
         console.log(error);
       });
-  }, []);
+
+    // Clean up any existing chart instance
+    return () => {
+      if (chart) {
+        chart.destroy();
+      }
+    };
+  }, [activeTab, symbol]);
 
   return (
     <div>
@@ -72,4 +85,3 @@ export default function Home({symbol, width, height}) {
     </div>
   );
 }
-

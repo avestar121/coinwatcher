@@ -48,34 +48,24 @@ function Info() {
   switch (coinName) {
     case 'Bitcoin':
         return <AboutBTC />
-        break;
     case 'Ethereum':
         return <AboutETH />
-        break;
     case 'BNB':
         return <AboutBNB />
-            break;
     case 'XRP':
         return <AboutXRP />
-        break;
     case 'Cardano':
         return <AboutADA />
-        break;
     case 'Dogecoin':
         return <AboutDOGE />
-            break;
     case 'Polygon':
         return <AboutPolygon />
-            break;
     case 'Solana':
         return <AboutSOL />
-            break;
     case 'Tether':
         return <AboutUSDT />
-            break;
     default:
         return <AboutUSDC />
-        break;
 }
 }
 

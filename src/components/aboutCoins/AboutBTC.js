@@ -1,9 +1,7 @@
 import React from 'react'
 import Header from '../../components/Header'
-import solana from '../../assets/solana.png'
+import btc from '../../assets/btc.png'
 import { useEffect, useState } from 'react'
-import axios from 'axios'
-import Chart from 'chart.js'
 import Image from 'next/image'
 import Graph from '../Graph'
 
@@ -17,12 +15,12 @@ const styles = {
     flexStart: `flex items-start`,
     flexBetween: `flex justify-between`,
     flexBetweenCenter: `flex justify-between items-center`,
-    tabContainerWrapper: `p-10 pl-0 pr-0 w-1/3`,
+    tabContainerWrapper: `p-10 pl-0 pr-0 w-2/3`,
     flexCenter: `flex items-center`
 }
 
 function AboutBTC() {
-    
+  const [activeTab, setActiveTab] = useState('1M');
   const [coinName, setCoinName] = useState('')
   const [coinSymbol, setCoinSymbol]= useState('')
   const [price,setPrice] = useState('')
@@ -30,6 +28,10 @@ function AboutBTC() {
   useEffect(() => {
     getURLData()
   }, [])
+
+  useEffect(() => {
+    <Graph symbol={'BTCUSDT'} activeTab={activeTab}/>
+  }, [activeTab]);
 
   const getURLData = async () => {
     const queryString = window.location.search
@@ -47,10 +49,21 @@ function AboutBTC() {
             <div className = {styles.flexStart}>
                 <div className={styles.tabContainerWrapper}>
                     <div className={styles.flexBetween}>
-                        <Graph symbol={'BTCUSDT'}/>
+                        <div className={styles.tabContainer}>
+                            <button className={styles.tabItem}>Price</button>
+                            <button className={styles.tabItem}>Market Cap</button>
+                        </div>
+                         <div>
+                            <button className={activeTab === '15m' ? styles.activeTab : styles.tabItem} onClick={() => setActiveTab('15m')}>15m</button>
+                            <button className={activeTab === '30m' ? styles.activeTab : styles.tabItem} onClick={() => setActiveTab('30m')}>30m</button>
+                            <button className={activeTab === '1h' ? styles.activeTab : styles.tabItem} onClick={() => setActiveTab('1h')}>1h</button>
+                            <button className={activeTab === '4h' ? styles.activeTab : styles.tabItem} onClick={() => setActiveTab('4h')}>4h</button>
+                            <button className={activeTab === '1d' ? styles.activeTab : styles.tabItem} onClick={() => setActiveTab('1d')}>1d</button>
+                            <button className={activeTab === '1M' ? styles.activeTab : styles.tabItem} onClick={() => setActiveTab('1M')}>1M</button>
+                         </div>
                     </div>
                     <br />
-                    {/* */}
+                    <Graph symbol={'BTCUSDT'} activeTab={activeTab}/>
                     <br />
                     <div className={styles.flexBetweenCenter}>
                         <p>
@@ -60,13 +73,13 @@ function AboutBTC() {
                     </div>
                     <br />
                     <br />
-                    <p>{coinName}</p>
+                    
                 </div>
 
                     <div className='pt-10 ml-5'>
                         {/* <Chat/>*/}
                     </div>
-
+                    <Image src={btc} width={40} height={40} />
             </div>
         </main>
     </div>
