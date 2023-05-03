@@ -32,7 +32,8 @@ export default function SmallGraph({symbol, width, height}) {
               borderColor: '#17C784',
               borderWidth: 1.5,
               fill: false,
-              pointRadius: 0 
+              pointRadius: 0,
+              backgroundColor: 'transparent' 
             }]
           },
           options: {

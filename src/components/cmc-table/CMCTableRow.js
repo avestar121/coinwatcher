@@ -54,28 +54,19 @@ const CMCtableRow = ({
                 symbol = 'SOLUSDT';
                 break;
         default:
-            symbol = 'USDCUSDT'; // default to USDT if symbol is unknown
+            symbol = 'USDCUSDT'; 
             break;
     }
 
-    const getRandomGraph = () => {
-        const rndInt = Math.floor(Math.random() * 10) + 1
-        return graphImages[rndInt]
-    }
 
     const router = useRouter()
 
     const viewCoinDetails = () => {
         router.push(
-            `/currencies/info?symbol=${coinSymbol}&coin=${coinName}&price=${price}`
+            `/currencies/info?symbol=${coinSymbol}&coin=${coinName}&price=${price}&hRate=${hRate}`
         )
     }
 
-    const viewPrice = () => {
-        router.push(
-            `/currencies/price?symbol=${coinSymbol}&coin=${coinName}&price=${price}`
-        )
-    }
 
     const formatNum = num => {
         return Number(num.toFixed(2)).toLocaleString()
@@ -100,7 +91,7 @@ const CMCtableRow = ({
             ) : ( <></>
             )}
 
-            <td className='cursor-pointer' onClick={viewPrice}>
+            <td className='cursor-pointer' onClick={viewCoinDetails}>
                 <p>${formatNum(price)}</p>
             </td>
             <td>

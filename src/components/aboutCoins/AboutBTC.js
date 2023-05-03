@@ -1,10 +1,10 @@
 import React from 'react'
 import Header from '../../components/Header'
-import btc from '../../assets/btc.png'
 import { useEffect, useState } from 'react'
-import Image from 'next/image'
 import Graph from '../Graph'
-
+import btc from '../../assets/btc.png'
+import Image from 'next/image'
+import {Rate} from '../cmc-table/Rate'
 
 const styles = {
     activeTab: `p-1 px-2 mr-2 rounded-lg bg-[#171924]`,
@@ -16,14 +16,20 @@ const styles = {
     flexBetween: `flex justify-between`,
     flexBetweenCenter: `flex justify-between items-center`,
     tabContainerWrapper: `p-10 pl-0 pr-0 w-2/3`,
-    flexCenter: `flex items-center`
+    flexCenter: `flex items-center`,
+    bigDetailsContainer: `flex justify-between mb-20 `,
+    detailsContainer: `flex w-1/2`,
+    flexColumn: 'flex flex-col',
+    imageContainer: `w-9 h-9`,
+    detailsLine:`flex items-center`
 }
 
 function AboutBTC() {
   const [activeTab, setActiveTab] = useState('1M');
   const [coinName, setCoinName] = useState('')
   const [coinSymbol, setCoinSymbol]= useState('')
-  const [price,setPrice] = useState('')
+  const [price,setPrice] = useState(0)
+  const [hRate, setHrate] = useState('')
 
   useEffect(() => {
     getURLData()
@@ -38,8 +44,9 @@ function AboutBTC() {
     const urlParams = new URLSearchParams(queryString)
 
     setCoinName(urlParams.get('coin'))
-    setPrice(urlParams.get('price').toLocaleString())
+    setPrice(Number(urlParams.get('price')).toLocaleString())
     setCoinSymbol(urlParams.get('symbol'))
+    setHrate(urlParams.get('hRate'))
   }
 
   return (
@@ -48,10 +55,33 @@ function AboutBTC() {
         <main className={styles.main}>
             <div className = {styles.flexStart}>
                 <div className={styles.tabContainerWrapper}>
+                  <div className={styles.bigDetailsContainer}>
+                    <div className={styles.detailsContainer}>
+
+                      <div className={styles.detailsLine}>
+                        <div className={styles.imageContainer}>
+                          <Image src={btc} width="100%" height="100%"/>
+                        </div>
+                        <p className="ml-3 font-bold" style={{ fontSize: '2rem' }}>Bitcoin</p>
+                        
+                      </div>
+
+                    </div>
+
+                    <div className={styles.detailsContainer}>
+                        <div className={styles.flexColumn}>
+                          <p className='text-[#6f7577]'>{"Bitcoin Price(BTC)"}</p>
+                            <div className={styles.detailsLine}>
+                              <p className="mr-3 font-bold" style={{ fontSize: '1.5rem' }}>{price.toString().slice(0,-1)}</p>
+                              <Rate isIncrement={true} rate={hRate.slice(0,4)}/>
+                            </div>
+                        </div>
+                    </div>
+                    
+                  </div>
                     <div className={styles.flexBetween}>
                         <div className={styles.tabContainer}>
-                            <button className={styles.tabItem}>Price</button>
-                            <button className={styles.tabItem}>Market Cap</button>
+                            <p className={styles.tabItem}>Price chart</p>
                         </div>
                          <div>
                             <button className={activeTab === '15m' ? styles.activeTab : styles.tabItem} onClick={() => setActiveTab('15m')}>15m</button>
@@ -79,7 +109,6 @@ function AboutBTC() {
                     <div className='pt-10 ml-5'>
                         {/* <Chat/>*/}
                     </div>
-                    <Image src={btc} width={40} height={40} />
             </div>
         </main>
     </div>

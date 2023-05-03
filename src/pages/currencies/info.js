@@ -30,6 +30,7 @@ function Info() {
   const [coinName, setCoinName] = useState('')
   const [coinSymbol, setCoinSymbol]= useState('')
   const [price,setPrice] = useState('')
+  const [hRate, setHrate] = useState('')
 
   useEffect(() => {
     getURLData()
@@ -42,6 +43,7 @@ function Info() {
     setCoinName(urlParams.get('coin'))
     setPrice(urlParams.get('price').toLocaleString())
     setCoinSymbol(urlParams.get('symbol'))
+    setHrate(urlParams.get('hRate'))
   }
 
 

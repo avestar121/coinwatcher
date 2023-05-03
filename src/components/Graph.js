@@ -23,7 +23,6 @@ export default function Graph({symbol, activeTab}) {
 
         const ctx = canvasRef.current.getContext('2d');
 
-        // Clean up any existing chart instance
         if (chart) {
           chart.destroy();
         }
@@ -37,7 +36,9 @@ export default function Graph({symbol, activeTab}) {
               data: prices,
               borderColor: 'blue',
               fill: false,
-              pointRadius: 0 
+              pointRadius: 10,
+              pointBackgroundColor: 'rgba(0, 0, 0, 0)',
+              pointBorderColor: 'rgba(0, 0, 0, 0)'
             }]
           },
           options: {
@@ -61,9 +62,36 @@ export default function Graph({symbol, activeTab}) {
               }
             },
             responsive: true,
-            maintainAspectRatio: false
+            maintainAspectRatio: false,
+            plugins: {
+              crosshair: {
+                line: {
+                  color: 'rgba(0, 0, 0, 0.5)',
+                  width: 1
+                },
+                sync: {
+                  enabled: false
+                },
+                zoom: {
+                  enabled: false
+                },
+                snap: {
+                  enabled: true,
+                  mode: 'xy'
+                },
+                callbacks: {
+                  label: function(item, data) {
+                    var label = data.datasets[item.datasetIndex].label || '';
+                    if (label) {
+                      label += ': ';
+                    }
+                    label += item.yLabel.toFixed(2);
+                    return label;
+                  }
+                }
+              }
+            }
           }
-          
         });
         setChart(newChart);
       })
@@ -71,7 +99,6 @@ export default function Graph({symbol, activeTab}) {
         console.log(error);
       });
 
-    // Clean up any existing chart instance
     return () => {
       if (chart) {
         chart.destroy();
