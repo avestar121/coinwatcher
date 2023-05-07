@@ -59,8 +59,8 @@ function AboutPOLYGON({rank, coinName, price, hRate, coinSymbol,coinData, }) {
                             <p className='text-[#6f7577] text-sm mt-8'>Tags:  </p>
                       </div>
                       <div className={styles.detailsLine}> 
-                            {coinData.tags.slice(0,4).map(tag => {
-                              return <p className='p-1 px-2 mr-2 rounded-lg bg-[#2e2f39] text-sm'>{tag}</p>
+                            {coinData.tags.slice(0,4).map((tag,index)=> {
+                              return <p key={index} className='p-1 px-2 mr-2 rounded-lg bg-[#2e2f39] text-sm'>{tag}</p>
                             })}
                       </div>
                     </div>
