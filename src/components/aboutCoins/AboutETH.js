@@ -1,46 +1,40 @@
 import React from 'react'
 import Header from '../../components/Header'
-import btc from '../../assets/btc.png'
 import { useEffect, useState } from 'react'
-import Image from 'next/image'
 import Graph from '../Graph'
+import eth from '../../assets/eth.png'
+import Image from 'next/image'
+import {Rate} from '../cmc-table/Rate'
 
 
 const styles = {
     activeTab: `p-1 px-2 mr-2 rounded-lg bg-[#171924]`,
+    infoBox: `p-1 px-2 mr-2 rounded-lg bg-[#2e2f39]`,
     tabItem: `px-2`,
     tabCointainer: `flex items-center p-2 rounded-xl bg-[#222531] border border-gray-500/10 text-sm`,
     info: `min-h-screen`,
     main: `text-white mx-20 max-w-screen-2xl`,
-    flexStart: `flex items-start`,
+    flexStart: `flex items-center justify-center`,
     flexBetween: `flex justify-between`,
     flexBetweenCenter: `flex justify-between items-center`,
     tabContainerWrapper: `p-10 pl-0 pr-0 w-2/3`,
-    flexCenter: `flex items-center`
+    flexCenter: `flex items-center`,
+    bigDetailsContainer: `flex justify-between mb-20 `,
+    detailsContainer: `flex w-1/2`,
+    flexColumn: 'flex flex-col',
+    imageContainer: `w-9 h-9`,
+    detailsLine:`flex items-center my-1`
 }
 
-function AboutBTC() {
+function AboutETH({rank, coinName, price, hRate, coinSymbol,coinData, }) {
   const [activeTab, setActiveTab] = useState('1M');
-  const [coinName, setCoinName] = useState('')
-  const [coinSymbol, setCoinSymbol]= useState('')
-  const [price,setPrice] = useState('')
 
-  useEffect(() => {
-    getURLData()
-  }, [])
 
-  useEffect(() => {
-    <Graph symbol={'ETHUSDT'} activeTab={activeTab}/>
-  }, [activeTab]);
 
-  const getURLData = async () => {
-    const queryString = window.location.search
-    const urlParams = new URLSearchParams(queryString)
+  const formatNum = num => {
+    return Number(num.toFixed(2)).toLocaleString()
+}
 
-    setCoinName(urlParams.get('coin'))
-    setPrice(urlParams.get('price').toLocaleString())
-    setCoinSymbol(urlParams.get('symbol'))
-  }
 
   return (
     <div className={styles.info}>
@@ -48,10 +42,61 @@ function AboutBTC() {
         <main className={styles.main}>
             <div className = {styles.flexStart}>
                 <div className={styles.tabContainerWrapper}>
+                  <div className={styles.bigDetailsContainer}>
+                    <div className={styles.detailsContainer}>
+                    <div className={styles.flexColumn}>
+                      <div className={styles.detailsLine}>
+                        <div className={styles.imageContainer}>
+                          <Image src={eth} width="100%" height="100%"/>
+                        </div>
+                        <p className="ml-3 font-bold" style={{ fontSize: '2rem' }}>{coinName}</p>
+                        <p className='p-1 px-2 mr-2 rounded-lg bg-[#2e2f39] ml-3'>{coinSymbol}</p>
+                      </div>
+                      <div className={styles.detailsLine}>
+                          <div className={styles.infoBox}>Rank #{rank}</div>
+                      </div>
+                      <div className={styles.detailsLine}> 
+                            <p className='text-[#6f7577] text-sm mt-8'>Tags:  </p>
+                      </div>
+                      <div className={styles.detailsLine}> 
+                            {coinData.tags.slice(0,4).map(tag => {
+                              return <p className='p-1 px-2 mr-2 rounded-lg bg-[#2e2f39] text-sm'>{tag}</p>
+                            })}
+                      </div>
+                    </div>
+                    {console.log(coinData)}
+                    </div>
+                    <div className={styles.detailsContainer}>
+                        <div className={styles.flexColumn}>
+                          <p className='text-[#6f7577]'>{`${coinName} Price(${coinSymbol})`}</p>
+                            <div className={styles.detailsLine}>
+                              <p className="mr-3 font-bold" style={{ fontSize: '1.5rem' }}>${price.toFixed(2)}</p>
+                              <div className={styles.infoBox}><Rate isIncrement={hRate > 0 ? true : false} rate={hRate.toString().slice(0,4)}/></div>
+                              </div>
+                        <div className={styles.detailsLine}> 
+                            <p className='text-[#6f7577] text-sm'>Market Cap :  </p>
+                            <p className='ml-2 text-sm'>${formatNum(coinData.quote.USD.market_cap)}</p>
+                        </div>
+                        <div className={styles.detailsLine}> 
+                            <p className='text-[#6f7577] text-sm'>Fully Diluted Market Cap :  </p>
+                            <p className='ml-2 text-sm'>${formatNum(coinData.quote.USD.fully_diluted_market_cap)}</p>
+                        </div>
+                        <div className={styles.detailsLine}> 
+                            <p className='text-[#6f7577] text-sm mt-8'>Volume 24h :  </p>
+                            <p className='ml-2 text-sm mt-8'>${formatNum(coinData.quote.USD.volume_24h)}</p>
+                            <div className='mt-8 ml-2 text-sm p-1 px-2 mr-2 rounded-lg bg-[#2e2f39]'><Rate isIncrement={coinData.quote.USD.volume_change_24h > 0 ? true : false} rate={coinData.quote.USD.volume_change_24h.toFixed(1)}/></div>
+                        </div>
+                        </div>
+                        
+                    </div>
+                  </div>
+                  <p className="mb-3 font-bold" style={{ fontSize: '1.4rem' }}>{coinSymbol} Price Live Data</p>
+                  <p className='mb-10'>{`The live ${coinName} price today is $${price.toFixed(2)} USD with a 24-hour trading volume of $${formatNum(coinData.quote.USD.volume_24h)} USD. We update our ${coinSymbol} to USD price in real-time. The current CoinWatcher ranking is #${rank}, with a live market cap of $${formatNum(coinData.quote.USD.market_cap)} USD. It has a circulating supply of ${formatNum(coinData.circulating_supply)} ${coinSymbol} coins and the max. supply is not available.
+
+If you would like to know where to buy ${coinName} at the current rate, the top cryptocurrency exchanges for trading in ${coinName} stock are currently Binance, OKX, Deepcoin, Bitrue, and CoinW. You can find others listed on our crypto exchanges page.`}</p>
                     <div className={styles.flexBetween}>
                         <div className={styles.tabContainer}>
-                            <button className={styles.tabItem}>Price</button>
-                            <button className={styles.tabItem}>Market Cap</button>
+                            <p className={styles.tabItem}>{coinSymbol} Price chart</p>
                         </div>
                          <div>
                             <button className={activeTab === '15m' ? styles.activeTab : styles.tabItem} onClick={() => setActiveTab('15m')}>15m</button>
@@ -65,25 +110,21 @@ function AboutBTC() {
                     <br />
                     <Graph symbol={'ETHUSDT'} activeTab={activeTab}/>
                     <br />
-                    <div className={styles.flexBetweenCenter}>
-                        <p>
-                            Want more data?{' '}
-                            <span className='text-[#6188FF]'>Check out our API</span>
-                        </p>
-                    </div>
-                    <br />
-                    <br />
+                    <p className="mb-3 font-bold" style={{ fontSize: '1.4rem' }}>What Is {coinName} ({coinSymbol})?</p>
+                  <p className='mb-10'>Ethereum is a decentralized open-source blockchain system that features its own cryptocurrency, Ether. ETH works as a platform for numerous other cryptocurrencies, as well as for the execution of decentralized smart contracts.
+
+Ethereum was first described in a 2013 whitepaper by Vitalik Buterin. Buterin, along with other co-founders, secured funding for the project in an online public crowd sale in the summer of 2014. The project team managed to raise $18.3 million in Bitcoin, and Ethereum’s price in the Initial Coin Offering (ICO) was $0.311, with over 60 million Ether sold. Taking Ethereum’s price now, this puts the return on investment (ROI) at an annualized rate of over 270%, essentially almost quadrupling your investment every year since the summer of 2014.
+
+The Ethereum Foundation officially launched the blockchain on July 30, 2015, under the prototype codenamed “Frontier.” Since then, there has been several network updates — “Constantinople” on Feb. 28, 2019, “Istanbul” on Dec. 8, 2019, “Muir Glacier” on Jan. 2, 2020, “Berlin” on April 14, 2021, and most recently on Aug. 5, 2021, the “London” hard fork.
+
+Ethereum’s own purported goal is to become a global platform for decentralized applications, allowing users from all over the world to write and run software that is resistant to censorship, downtime and fraud.</p>
                     
                 </div>
 
-                    <div className='pt-10 ml-5'>
-                        {/* <Chat/>*/}
-                    </div>
-                    <Image src={btc} width={40} height={40} />
             </div>
         </main>
     </div>
   )
 }
 
-export default AboutBTC;
+export default AboutETH;

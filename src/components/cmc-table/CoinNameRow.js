@@ -1,127 +1,133 @@
-import React from 'react'
-import Image from 'next/image'
-import btc from '../../assets/btc.png'
-import eth from '../../assets/eth.png'
-import usdt from '../../assets/usdt.png'
-import bnb from '../../assets/bnb.png'
-import usdc from '../../assets/usdc.png'
-import xrp from '../../assets/xrp.png'
-import cardano from '../../assets/cardano.png'
-import doge from '../../assets/dogecoin-doge-logo.png'
-import matic from '../../assets/matic-logo.webp'
-import solana from '../../assets/solana.png'
-
+import React from 'react';
+import Image from 'next/image';
+import btc from '../../assets/btc.png';
+import eth from '../../assets/eth.png';
+import usdt from '../../assets/usdt.png';
+import bnb from '../../assets/bnb.png';
+import usdc from '../../assets/usdc.png';
+import xrp from '../../assets/xrp.png';
+import cardano from '../../assets/cardano.png';
+import doge from '../../assets/dogecoin-doge-logo.png';
+import matic from '../../assets/matic-logo.webp';
+import solana from '../../assets/solana.png';
 
 const styles = {
   coinNameRow: `flex items-center`,
-  buyButton: `bg-[#1A1F3A] text-[#6188FF] p-1 px-3 text-sm rounded-lg cursor-pointer hover:opacity-50`
-}
+};
 
-const CoinNameRow = ({name, icon,clicked}) => {
+const CoinNameRow = ({ name, icon, coinSymbol, clicked }) => {
   const coinIcon = () => {
-    switch(name){
+    switch (name) {
       case 'Bitcoin':
         return (
-          <Image 
+          <Image
             src={btc}
             className='rounded-full'
             width={20}
             height={20}
-            alt=''/>
-        )
-        case 'Ethereum':
-          return (
-            <Image 
-              src={eth}
-              className='rounded-full'
-              width={20}
-              height={20}
-              alt=''/>
-          )
-          case 'Tether':
+            alt=''
+          />
+        );
+      case 'Ethereum':
         return (
-          <Image 
+          <Image
+            src={eth}
+            className='rounded-full'
+            width={20}
+            height={20}
+            alt=''
+          />
+        );
+      case 'Tether':
+        return (
+          <Image
             src={usdt}
             className='rounded-full'
             width={20}
             height={20}
-            alt=''/>
-        )
-        case 'BNB':
+            alt=''
+          />
+        );
+      case 'BNB':
         return (
-          <Image 
+          <Image
             src={bnb}
             className='rounded-full'
             width={20}
             height={20}
-            alt=''/>
-        )
-        case 'USD Coin':
+            alt=''
+          />
+        );
+      case 'USD Coin':
         return (
-          <Image 
+          <Image
             src={usdc}
             className='rounded-full'
             width={20}
             height={20}
-            alt=''/>
-        )
-        case 'XRP':
+            alt=''
+          />
+        );
+      case 'XRP':
         return (
-          <Image 
+          <Image
             src={xrp}
             className='rounded-full'
             width={20}
             height={20}
-            alt=''/>
-        )
-        case 'Cardano':
+            alt=''
+          />
+        );
+      case 'Cardano':
         return (
-          <Image 
+          <Image
             src={cardano}
             className='rounded-full'
             width={20}
             height={20}
-            alt=''/>
-        )
-        case 'Dogecoin':
+            alt=''
+          />
+        );
+      case 'Dogecoin':
         return (
-          <Image 
+          <Image
             src={doge}
             className='rounded-full'
             width={20}
             height={20}
-            alt=''/>
-        )
-        case 'Polygon':
+            alt=''
+          />
+        );
+      case 'Polygon':
         return (
-          <Image 
+          <Image
             src={matic}
             className='rounded-full'
             width={20}
             height={20}
-            alt=''/>
-        )
-        case 'Solana':
+            alt=''
+          />
+        );
+      case 'Solana':
         return (
-          <Image 
+          <Image
             src={solana}
             className='rounded-full'
             width={20}
             height={20}
-            alt=''/>
-        )
+            alt=''
+          />
+        );
     }
-  }
+  };
 
   return (
-    <div className={styles.coinNameRow}>
-        <div className='mr-3 flex' onClick={clicked}>
-          <div className='mr-2'>{coinIcon()}</div>
-          {name}
-          
-        </div>
+    <div className={styles.coinNameRow} onClick={clicked}>
+      <div className='mr-2'>{coinIcon()}</div>
+      <p className='font-bold' style={{ fontSize: '0.9rem' }}>{` ${name}`}</p>
+      <p className='text-[#6f7577] ml-2'>{` ${coinSymbol}`}</p>
     </div>
-  )
-}
+  );
+};
 
-export default CoinNameRow
+export default CoinNameRow;

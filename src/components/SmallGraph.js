@@ -7,19 +7,21 @@ import 'chartjs-adapter-moment';
 import { LineController, TimeScale, LinearScale, LineElement, Tooltip } from 'chart.js';
 Chart.register(LineController, TimeScale, LinearScale, LineElement, Tooltip);
 
-export default function SmallGraph({symbol, width, height}) {
+export default function SmallGraph({symbol, color}) {
   const canvasRef = useRef(null);
   const [chart, setChart] = useState(null);
 
   useEffect(() => {
     const apiUrl = 'https://api.binance.com/api/v3/klines';
-    const interval = '30m';
+    const interval = '1h';
 
     axios.get(`${apiUrl}?symbol=${symbol}&interval=${interval}`)
       .then(response => {
-        const data = response.data;
+        const data = response.data.slice(-168);
         const prices = data.map(datum => parseFloat(datum[4]));
         const labels = data.map(datum => new Date(datum[0]));
+
+
 
         const ctx = canvasRef.current.getContext('2d');
         const newChart = new Chart(ctx, {
@@ -29,10 +31,10 @@ export default function SmallGraph({symbol, width, height}) {
             datasets: [{
               label: `${symbol} Price`,
               data: prices,
-              borderColor: '#17C784',
+              borderColor: color,
               borderWidth: 1.5,
               fill: false,
-              pointRadius: 0,
+              pointRadius: 0.5,
               backgroundColor: 'transparent' 
             }]
           },

@@ -32,7 +32,6 @@ export default function Graph({symbol, activeTab}) {
           data: {
             labels: labels,
             datasets: [{
-              label: `${symbol} Price`,
               data: prices,
               borderColor: 'blue',
               fill: false,
@@ -64,6 +63,9 @@ export default function Graph({symbol, activeTab}) {
             responsive: true,
             maintainAspectRatio: false,
             plugins: {
+              legend: {
+                display: false
+              },
               crosshair: {
                 line: {
                   color: 'rgba(0, 0, 0, 0.5)',
@@ -88,7 +90,8 @@ export default function Graph({symbol, activeTab}) {
                     label += item.yLabel.toFixed(2);
                     return label;
                   }
-                }
+                },
+                
               }
             }
           }

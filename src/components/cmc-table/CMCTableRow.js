@@ -1,5 +1,4 @@
 import React from 'react'
-import Image from 'next/image'
 import More from '../../assets/svg/more'
 import Star from '../../assets/svg/star'
 import {Rate} from './Rate'
@@ -8,7 +7,7 @@ import CoinNameRow from './CoinNameRow'
 import SmallGraph from '../SmallGraph'
 
 const styles = {
-    tableRow: `text-white border-b border-gray-800 text-[0.93rem]`
+    tableRow: `text-white border-b border-gray-800 text-[0.93rem] items-center`,
 }
 
 const CMCtableRow = ({
@@ -19,8 +18,6 @@ const CMCtableRow = ({
     price = '---',
     hRate = '---',
     dRate = '---',
-    hRateIsIncrement,
-    dRateIsIncrement,
     marketCapValue = '---',
     volumeValue = '---',
     volumeCryptoValue = '---',
@@ -63,7 +60,7 @@ const CMCtableRow = ({
 
     const viewCoinDetails = () => {
         router.push(
-            `/currencies/info?symbol=${coinSymbol}&coin=${coinName}&price=${price}&hRate=${hRate}`
+            `/info?coin=${coinName}`
         )
     }
 
@@ -82,11 +79,10 @@ const CMCtableRow = ({
             <td>{starNum}</td>
 
             {coinIcon && coinIcon ? (
-                <td className='cursor-pointer'>
-                    <CoinNameRow name={coinName}
-                    icon= {coinIcon}
-                    clicked = {viewCoinDetails}
-                    />
+                <td className="cursor-pointer">
+                    <div style={{ width: '150px', height: '40px', display: 'flex', alignItems: 'center' }}>
+                        <CoinNameRow name={coinName} icon={coinIcon} coinSymbol={coinSymbol} clicked={viewCoinDetails} />
+                    </div>
                 </td>
             ) : ( <></>
             )}
@@ -95,10 +91,10 @@ const CMCtableRow = ({
                 <p>${formatNum(price)}</p>
             </td>
             <td>
-                <Rate isIncrement={hRateIsIncrement} rate = {`${formatNum(hRate)}%`}/>
+                <Rate isIncrement={hRate > 0 ? true : false} rate = {`${formatNum(hRate)}`}/>
             </td>
             <td>
-                <Rate isIncrement={dRateIsIncrement} rate = {`${formatNum(dRate)}%`}/>
+                <Rate isIncrement={dRate > 0 ? true : false} rate = {`${formatNum(dRate)}`}/>
             </td>
 
             <td>
@@ -120,9 +116,9 @@ const CMCtableRow = ({
                     <p>{formatNum(circulatingSupply)}</p>
                 </div>
             </td>
-            <td>
+            <td style={{ verticalAlign: 'top' }}>
                 <div style={{width: '10rem', height: '30px'}}>
-                    <SmallGraph symbol={symbol}/>
+                    <SmallGraph symbol={symbol} color={dRate > 0 ? '#17C784' : '#EA3943'}/>
                 </div>
             </td>
 

@@ -12,7 +12,7 @@ export const Rate = ({isIncrement, rate}) => {
   return (
     <div className={styles.rate}>
         {isIncrement ? <ChevronUp fill='#17C784'/> : <ChevronDown fill='#EA3943'/>}
-        <p className={isIncrement ? styles.green : styles.red}>{rate}</p>
+        <p className={isIncrement ? styles.green : styles.red}>{rate}%</p>
     </div>
   )
 }

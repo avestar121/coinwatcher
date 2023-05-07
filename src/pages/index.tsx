@@ -7,11 +7,11 @@ const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
   return (
-    <div className="min-h-screen ">
+    <div className="mb-10" style={{ width: '100%' }}>
       <Header />
-      <div className="mt-10"/>
+      <div className="mt-10 " style={{ width: '100%' }}/>
       <Trending />
-      <div className="mt-20 bg-gray-500"/>
+      <div className="mt-20 bg-gray-500" style={{ width: '100%' }}/>
       <CMCTable />
     </div>
   )
