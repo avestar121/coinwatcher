@@ -110,13 +110,13 @@ If you would like to know where to buy ${coinName} at the current rate, the top 
                     <Graph symbol={'USDCUSDT'} activeTab={activeTab}/>
                     <br />
                     <p className="mb-3 font-bold" style={{ fontSize: '1.4rem' }}>What Is {coinName} ({coinSymbol})?</p>
-                  <p className='mb-10'>USD Coin (known by its ticker USDC) is a stablecoin that is pegged to the U.S. dollar on a 1:1 basis. Every unit of this cryptocurrency in circulation is backed up by $1 that is held in reserve, in a mix of cash and short-term U.S. Treasury bonds. The Centre consortium, which is behind this asset, says USDC is issued by regulated financial institutions.
+                  <p className='mb-10'>{`USD Coin (known by its ticker USDC) is a stablecoin that is pegged to the U.S. dollar on a 1:1 basis. Every unit of this cryptocurrency in circulation is backed up by $1 that is held in reserve, in a mix of cash and short-term U.S. Treasury bonds. The Centre consortium, which is behind this asset, says USDC is issued by regulated financial institutions.
 
 The stablecoin originally launched on a limited basis in September 2018. Put simply, USD Coin's mantra is “digital money for the digital age” — and the stablecoin is designed for a world where cashless transactions are becoming more common.
 
 Several use cases have been unveiled for the USD Coin. As well as providing a safe haven for crypto traders in times of volatility, those behind the stablecoin say it can also allow businesses to accept payments in digital assets, and shake up an array of sectors including decentralized finance and gaming.
 
-Overall, the goal is to create an ecosystem where USDC is accepted by as many wallets, exchanges, service providers and dApps as possible.</p>
+Overall, the goal is to create an ecosystem where USDC is accepted by as many wallets, exchanges, service providers and dApps as possible.`}</p>
                     
                 </div>
 

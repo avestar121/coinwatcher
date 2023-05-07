@@ -111,7 +111,7 @@ If you would like to know where to buy ${coinName} at the current rate, the top 
                     <Graph symbol={'MATICUSDT'} activeTab={activeTab}/>
                     <br />
                     <p className="mb-3 font-bold" style={{ fontSize: '1.4rem' }}>What Is {coinName} ({coinSymbol})?</p>
-                  <p className='mb-10'>Polygon (previously Matic Network) is the first well-structured, easy-to-use platform for Ethereum scaling and infrastructure development. Its core component is Polygon SDK, a modular, flexible framework that supports building multiple types of applications.
+                  <p className='mb-10'>{`Polygon (previously Matic Network) is the first well-structured, easy-to-use platform for Ethereum scaling and infrastructure development. Its core component is Polygon SDK, a modular, flexible framework that supports building multiple types of applications.
 
 To learn more about this project, check out our deep dive of Polygon Matic.
 
@@ -131,7 +131,7 @@ Polygon boasts of up to 65,000 transactions per second on a single side chain, a
 
 The Plasma framework gives Polygon the potential of housing an unlimited number of decentralized applications on their infrastructure without experiencing the normal drawbacks common on proof-of-work blockchains. So far, Polygon has attracted more than 50 DApps to its PoS-secured Ethereum sidechain.
 
-MATIC, the native tokens of Polygon, is an ERC-20 token running on the Ethereum blockchain. The tokens are used for payment services on Polygon and as a settlement currency between users who operate within the Polygon ecosystem. The transaction fees on Polygon sidechains are also paid in MATIC tokens.</p>
+MATIC, the native tokens of Polygon, is an ERC-20 token running on the Ethereum blockchain. The tokens are used for payment services on Polygon and as a settlement currency between users who operate within the Polygon ecosystem. The transaction fees on Polygon sidechains are also paid in MATIC tokens.`}</p>
                     
                 </div>
 
