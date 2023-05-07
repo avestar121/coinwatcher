@@ -57,7 +57,7 @@ function AboutXRP({rank, coinName, price, hRate, coinSymbol,coinData, }) {
                             <p className='text-[#6f7577] text-sm mt-8'>Tags:  </p>
                       </div>
                       <div className={styles.detailsLine}> 
-                            {coinData.tags.slice(0,4).map(tag,index => {
+                            {coinData.tags.slice(0,4).map((tag,index) => {
                               return <p key={index} className='p-1 px-2 mr-2 rounded-lg bg-[#2e2f39] text-sm'>{tag}</p>
                             })}
                       </div>
@@ -136,7 +136,6 @@ The SEC uses the “Howey test,” based on the Supreme Court ruling on SEC v. W
 
 While most companies targeted by the SEC in a similar matter chose to settle, Ripple decided to fight. The outcome of the lawsuit will undoubtedly have far-reaching implications in the crypto space. If Ripple prevails, the SEC could lose some of its credibility, giving other crypto-based companies the confidence to revolt. On the flip side, if the SEC wins the case, it could upend the way crypto firms operate and usher in a new wave of registration rules that apply to securities.</p>
                 </div>
-
             </div>
         </main>
     </div>
