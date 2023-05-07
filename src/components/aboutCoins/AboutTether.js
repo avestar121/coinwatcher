@@ -110,9 +110,9 @@ If you would like to know where to buy ${coinName} at the current rate, the top 
                     <Graph symbol={'USDCUSDT'} activeTab={activeTab}/>
                     <br />
                     <p className="mb-3 font-bold" style={{ fontSize: '1.4rem' }}>What Is {coinName} ({coinSymbol})?</p>
-                  <p className='mb-10'>USDT is a stablecoin (stable-value cryptocurrency) that mirrors the price of the U.S. dollar, issued by a Hong Kong-based company Tether. The token’s peg to the USD is achieved via maintaining a sum of commercial paper, fiduciary deposits, cash, reserve repo notes, and treasury bills in reserves that is equal in USD value to the number of USDT in circulation.
+                  <p className='mb-10'>USDT is a stablecoin (stable-value cryptocurrency) that mirrors the price of the U.S. dollar, issued by a Hong Kong-based company Tether. The token's peg to the USD is achieved via maintaining a sum of commercial paper, fiduciary deposits, cash, reserve repo notes, and treasury bills in reserves that is equal in USD value to the number of USDT in circulation.
 
-Originally launched in July 2014 as Realcoin, a second-layer cryptocurrency token built on top of Bitcoin’s blockchain through the use of the Omni platform, it was later renamed to USTether, and then, finally, to USDT. In addition to Bitcoin's, USDT was later updated to work on the Ethereum, EOS, Tron, Algorand, and OMG blockchains.
+Originally launched in July 2014 as Realcoin, a second-layer cryptocurrency token built on top of Bitcoin's blockchain through the use of the Omni platform, it was later renamed to USTether, and then, finally, to USDT. In addition to Bitcoin's, USDT was later updated to work on the Ethereum, EOS, Tron, Algorand, and OMG blockchains.
 
 The stated purpose of USDT is to combine the unrestricted nature of cryptocurrencies — which can be sent between users without a trusted third-party intermediary — with the stable value of the US dollar.
 

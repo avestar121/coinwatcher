@@ -111,7 +111,7 @@ If you would like to know where to buy ${coinName} at the current rate, the top 
                     <Graph symbol={'SOLUSDT'} activeTab={activeTab}/>
                     <br />
                     <p className="mb-3 font-bold" style={{ fontSize: '1.4rem' }}>What Is {coinName} ({coinSymbol})?</p>
-                  <p className='mb-10'>Solana is a highly functional open source project that banks on blockchain technology’s permissionless nature to provide decentralized finance (DeFi) solutions. While the idea and initial work on the project began in 2017, Solana was officially launched in March 2020 by the Solana Foundation with headquarters in Geneva, Switzerland.
+                  <p className='mb-10'>Solana is a highly functional open source project that banks on blockchain technology's permissionless nature to provide decentralized finance (DeFi) solutions. While the idea and initial work on the project began in 2017, Solana was officially launched in March 2020 by the Solana Foundation with headquarters in Geneva, Switzerland.
 
 To learn more about this project, check out our deep dive of Solana.
 

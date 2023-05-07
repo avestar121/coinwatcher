@@ -117,7 +117,7 @@ To learn more about this project, check out our deep dive of Polygon Matic.
 
 Using Polygon, one can create optimistic rollup chains, ZK rollup chains, stand alone chains or any other kind of infra required by the developer.
 
-Polygon effectively transforms Ethereum into a full-fledged multi-chain system (aka Internet of Blockchains). This multi-chain system is akin to other ones such as Polkadot, Cosmos, Avalanche etc. with the advantages of Ethereum’s security, vibrant ecosystem and openness.
+Polygon effectively transforms Ethereum into a full-fledged multi-chain system (aka Internet of Blockchains). This multi-chain system is akin to other ones such as Polkadot, Cosmos, Avalanche etc. with the advantages of Ethereum's security, vibrant ecosystem and openness.
 
 The $MATIC token will continue to exist and will play an increasingly important role, securing the system and enabling governance.
 
