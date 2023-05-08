@@ -8,10 +8,10 @@ const inter = Inter({ subsets: ['latin'] })
 export default function Home() {
   return (
     <div className="mb-10" style={{ width: '100%' }}>
-      <Header />
+      <Header badgeHome={true}/>
       <div className="mt-10 " style={{ width: '100%' }}/>
       <Trending />
-      <div className="mt-20 bg-gray-500" style={{ width: '100%' }}/>
+      <div className="mt-8 bg-gray-500" style={{ width: '100%' }}/>
       <CMCTable />
     </div>
   )

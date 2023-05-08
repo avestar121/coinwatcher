@@ -1,5 +1,4 @@
 import React, {useState, useContext, useEffect,useCallback} from 'react'
-import btc from '../../assets/btc.png'
 import eth from '../../assets/eth.png'
 import {CoinMarketContext} from '../../contex/contex'
 import CMCtableHeader from './CMCtableHeader'

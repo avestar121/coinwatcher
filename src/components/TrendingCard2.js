@@ -1,6 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
-import { Rate } from '../components/cmc-table/Rate';
+import { Rate } from './cmc-table/Rate';
 
 const styles = {
     trendingCard: `w-full p-5 py-3 pb-0 bg-[#323546] rounded-xl text-white mr-3`,
@@ -15,22 +15,21 @@ const formatNum = num => {
   };
   
 
-const TrendingCard = ({icon, trendingData,cap,capChange}) => {
+const TrendingCard = ({icon, volume}) => {
   return (
     <div className={styles.trendingCard}>
         <div className={styles.trendingCardWrapper}>
             <div className='flex'>
                 &nbsp;&nbsp;
-                {cap !== null && capChange !== null && (
+                {volume !== null && (
                 <>
-                    <p className='mr-2' style={{ fontSize: '1.2rem' }}>${formatNum(cap)}</p>
-                    <Rate isIncrement={capChange > 0} rate={`${formatNum(capChange)}`} chevron={true} />
+                    <p className='mr-2' style={{ fontSize: '1.2rem' }}>${formatNum(volume)}</p>
+                    
                 </>
                 )}
             </div>
-            
         </div>
-        <p className='mx-2 mt-0.5 mb-3 text-[#bcbcbc]'>Market Capitalization</p>
+        <p className='mx-2 mt-0.5 mb-3 text-[#bcbcbc]'>24h Trading Volume</p>
     </div>
   )
 }
