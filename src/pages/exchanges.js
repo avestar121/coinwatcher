@@ -13,18 +13,22 @@ const styles = {
     pb-2 sm:pb-4 
     pt-2 sm:pt-4
   `,
+  scrollableContainerX: `
+    overflow-x: auto; /* Enable horizontal scrolling */
+  `,
 };
 
 const Exchanges = () => {
   const [exchanges, setExchanges] = useState([]);
   const [showBTC, setShowBTC] = useState(true);
+  const [showEstablishedIn, setShowEstablishedIn] = useState(true);
 
   useEffect(() => {
     fetchExchanges();
-    handleWindowResize(); // Call the function once to set the initial state
-    window.addEventListener('resize', handleWindowResize); // Listen for window resize events
+    handleWindowResize();
+    window.addEventListener('resize', handleWindowResize);
     return () => {
-      window.removeEventListener('resize', handleWindowResize); // Clean up the event listener on component unmount
+      window.removeEventListener('resize', handleWindowResize); 
     };
   }, []);
 
@@ -42,21 +46,22 @@ const Exchanges = () => {
   };
 
   const handleWindowResize = () => {
-    setShowBTC(window.innerWidth >= 640); // Update the showBTC state based on screen size (e.g., 640px breakpoint)
+    setShowBTC(window.innerWidth >= 640);
+    setShowEstablishedIn(window.innerWidth >= 425);
   };
 
   return (
     <div className="mb-10">
       <Header badgeExchanges={true} />
-      <div className="mx-4 sm:mx-20">
-        <h2 className="text-2xl sm:text-3xl text-white mt-6 sm:mt-10 mb-6 sm:mb-10">
+      <div className={`mx-4 sm:mx-20 ${styles.scrollableContainerX}`}>
+        <h2 className="text-2xl sm:text-3xl text-white mt-6 sm:mt-10 mb-6 sm:mb-5">
           Top 10 Exchanges according to CoinWatcher
         </h2>
-        {console.log(exchanges)}
-        <div className="flex items-center text-sm sm:text-base font-bold text-white mt-6 sm:mt-10 mb-3">
+        <p className='text-white'>As of today, we track top 10 crypto exchanges to provide you with the best possible experience!</p>
+        <div className="flex items-center justify-between text-sm sm:text-base font-bold text-white mt-6 sm:mt-10 mb-3">
           <p style={{ width: '25%' }}>Name</p>
           <p style={{ width: '25%' }}>Trade Volume 24h</p>
-          <p style={{ width: '25%' }}>Established in:</p>
+          {showEstablishedIn && <p style={{ width: '25%' }}>Established in:</p>}
           <p style={{ width: '25%' }}>Exchange link</p>
         </div>
         <ul>

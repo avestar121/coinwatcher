@@ -1,9 +1,11 @@
 import React from 'react'
-import Image from 'next/image'
 
 const styles = {
-    trendingCard: `w-full p-5 py-3 pb-0 bg-[#323546] rounded-xl text-white mr-3`,
-    trendingCardWrapper: `flex items-center justify-between`
+  trendingCard: `
+  w-full p-2 py-3 pb-0 bg-[#323546] rounded-xl text-white 
+  mr-3 border-l-8 overflow-hidden mb-2
+  `,
+  trendingCardWrapper: `flex items-center justify-between`
 }
 
 const formatNum = num => {

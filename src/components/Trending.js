@@ -1,9 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import fire from '../assets/fire.png';
-import btc from '../assets/btc.png';
-import usdt from '../assets/usdt.png';
-import gainers from '../assets/gainers.png';
-import recent from '../assets/recent.png';
 import ReactSwitch from 'react-switch';
 import { Rate } from '../components/cmc-table/Rate';
 import TrendingCard from './TrendingCard';
@@ -15,7 +10,7 @@ import TrendingCard4 from './TrendingCard4';
 const styles = {
   trendingWrapper: `mx-auto max-w-screen-2xl mx-[5rem]`,
   h1: `text-3xl text-white`,
-  flexCenter: `flex items-center`,
+  flexCenter: `flex flex-col sm:flex-row items-center`,
 };
 
 const formatNum = num => {
@@ -32,33 +27,6 @@ const formatNumberToTrillions = (number) => {
   }
 };
 
-
-const trendingData = [
-  {
-    number: 1,
-    symbol: 'BTC',
-    name: 'Bitcoin',
-    icon: btc,
-    isIncrement: true,
-    rate: '2.34',
-  },
-  {
-    number: 2,
-    symbol: 'USDT',
-    name: 'Tether',
-    icon: usdt,
-    isIncrement: false,
-    rate: '9.23',
-  },
-  {
-    number: 3,
-    symbol: 'BTC',
-    name: 'Bitcoin',
-    icon: btc,
-    isIncrement: true,
-    rate: '2.34',
-  },
-];
 
 function Trending() {
   const [globalMarketCap, setGlobalMarketCap] = useState(null);
@@ -82,7 +50,7 @@ function Trending() {
       setBtcDominance(data.data.market_cap_percentage.btc)
       setTotalCoins(data.data.active_cryptocurrencies)
       
-      console.log(btcDominance)
+      console.log(data)
     } catch (error) {
       console.error('Failed to fetch global market data:', error);
     }
@@ -95,24 +63,19 @@ function Trending() {
   return (
     <div className="text-white">
       <div className={styles.trendingWrapper} id="Wrapper">
-        <div className="flex justify-between">
           <h1 className={styles.h1}>Todays Top 10 Cryptocurrencies Prices by Market Cap</h1>
-        </div>
+        
         <br />
         <div className="flex justify-between">
           {globalMarketCap !== null && marketCapChange !== null && (
             <>
-              <div className="flex">
-                <p>
-                  The global crypto market cap is {formatNumberToTrillions(globalMarketCap)}, with a  &nbsp;
-                </p>
-                <span>
+                <p className="sm:flex sm:items-center">
+                  The global crypto market cap is {formatNumberToTrillions(globalMarketCap)}, with a 
+                  <span className='ml-1 mr-1'>
                   <Rate isIncrement={marketCapChange > 0} rate={`${formatNum(marketCapChange)}`} chevron={true}/>
-                </span>
-                <p>
-                  &nbsp; change over the last 24 hours.{' '}
+                  </span>
+                  change over the last 24 hours.
                 </p>
-              </div>
               <div className={styles.flexCenter}>
                 <ReactSwitch
                   checked={showTrendingCards}
@@ -125,16 +88,14 @@ function Trending() {
         </div>
         <br />
 
-        <div className={styles.flexCenter}>
         {showTrendingCards && (
-        <>
-          <TrendingCard trendingData={trendingData} cap={globalMarketCap} capChange={marketCapChange}/>
+        <div className={`mb-10 ${styles.flexCenter}`}>
+          <TrendingCard cap={globalMarketCap} capChange={marketCapChange}/>
           <TrendingCard2 volume={totalVolume}/>
           <TrendingCard3 dominance={btcDominance} />
           <TrendingCard4 totalCoins={totalCoins}/>
-        </>
-)}
         </div>
+)}
       </div>
     </div>
   );

@@ -4,11 +4,12 @@ import Search from '../assets/svg/search';
 import { useRouter, useContext } from 'next/router';
 
 const styles = {
-  header: `bg-[#17171A] text-white h-20 flex justify-between items-center w-full sm:py-[30px] sm:px-[80px] px-[30px]`,
-  headerWrapper: `flex justify-end h-full max-w-screen-xL px-4`,
-  nav: `flex justify-end items-center gap-[20px]`,
+  header: `bg-[#17171A] text-white h-20 flex justify-between items-center w-full sm:py-[30px] sm:px-[80px] px-[15px]`,
+  headerWrapper: `flex justify-end h-full max-w-screen-xL sm:px-4`,
+  nav: `flex sm:flex-row flex-col sm:justify-end justify-center items-center gap-[10px]`,
+  smallNav:`mx-2`,
   navItem: `relative mr-1 cursor-pointer hover:opacity-60`,
-  navLink: `text-white flex sm:mx-[10px]`,
+  navLink: `text-white font-bold flex mx-[10px]`,
   badge: `rounded-full bg-blue-600 h-1 w-1 absolute bottom-5 right-0 top-1 ring-4`,
   inputContainer: `flex items-center justify-center p-2 rounded bg-[#171924]`,
   input: `bg-transparent outline-none text-white w-70 mL-3`,
