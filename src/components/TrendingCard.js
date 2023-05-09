@@ -27,7 +27,7 @@ const TrendingCard = ({cap, capChange }) => {
           &nbsp;&nbsp;
           {cap !== null && capChange !== null && (
             <>
-              <p className="mr-1 sm:text-xl text-sm ">
+              <p className="mr-1" style={{ fontSize: '1.2rem' }}>
                 ${formatNum(cap)}
               </p>
               <Rate isIncrement={capChange > 0} rate={`${formatNum(capChange)}`} chevron={true} />
