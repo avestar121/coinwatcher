@@ -20,10 +20,12 @@ const styles = {
   tabContainerWrapper: `p-10 pl-0 pr-0 sm:w-2/3`,
   flexCenter: `flex items-center`,
   bigDetailsContainer: `flex flex-col sm:flex-row justify-between mb-20 `,
+  bigDetailsContainerColumn: `flex flex-col mb-20`,
   detailsContainer: `flex w-1/2`,
   flexColumn: 'flex flex-col',
   imageContainer: `w-9 h-9`,
-  detailsLine:`flex items-center my-1`
+  detailsLine:`flex items-center my-1`,
+  
 }
 
 function AboutUSDC({rank, coinName, price, hRate, coinSymbol,coinData, }) {
@@ -34,6 +36,30 @@ function AboutUSDC({rank, coinName, price, hRate, coinSymbol,coinData, }) {
     return Number(num.toFixed(2)).toLocaleString()
 }
 
+  const [windowWidth, setWindowWidth] = useState(0);
+
+  useEffect(() => {
+    setWindowWidth(window.innerWidth);
+
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
+  const determineContainerStyle = () => {
+    if (windowWidth < 950) {
+      return styles.bigDetailsContainerColumn;
+    }
+    return styles.bigDetailsContainer;
+  };
+
+  const containerStyle = determineContainerStyle();
 
   return (
     <div className={styles.info}>
@@ -41,7 +67,7 @@ function AboutUSDC({rank, coinName, price, hRate, coinSymbol,coinData, }) {
         <main className={styles.main}>
             <div className = {styles.flexStart}>
                 <div className={styles.tabContainerWrapper}>
-                  <div className={styles.bigDetailsContainer}>
+                <div className={containerStyle}>
                     <div className={styles.detailsContainer}>
                     <div className={styles.flexColumn}>
                       <div className={styles.detailsLine}>

@@ -36,13 +36,39 @@ function AboutPOLYGON({rank, coinName, price, hRate, coinSymbol,coinData, }) {
 }
 
 
+const [windowWidth, setWindowWidth] = useState(0);
+
+useEffect(() => {
+  setWindowWidth(window.innerWidth);
+
+  const handleResize = () => {
+    setWindowWidth(window.innerWidth);
+  };
+
+  window.addEventListener('resize', handleResize);
+
+  return () => {
+    window.removeEventListener('resize', handleResize);
+  };
+}, []);
+
+const determineContainerStyle = () => {
+  if (windowWidth < 950) {
+    return styles.bigDetailsContainerColumn;
+  }
+  return styles.bigDetailsContainer;
+};
+
+const containerStyle = determineContainerStyle();
+
+
   return (
     <div className={styles.info}>
         <Header />
         <main className={styles.main}>
             <div className = {styles.flexStart}>
                 <div className={styles.tabContainerWrapper}>
-                  <div className={styles.bigDetailsContainer}>
+                  <div className={containerStyle}>
                     <div className={styles.detailsContainer}>
                     <div className={styles.flexColumn}>
                       <div className={styles.detailsLine}>
