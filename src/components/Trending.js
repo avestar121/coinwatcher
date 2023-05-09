@@ -8,13 +8,14 @@ import TrendingCard4 from './TrendingCard4';
 
 
 const styles = {
-  trendingWrapper: `mx-auto max-w-screen-2xl mx-[5rem]`,
+  trendingWrapper: `mx-0.5 max-w-screen-2xl`,
   h1: `text-3xl text-white`,
   flexCenter: `flex flex-col sm:flex-row items-center`,
 };
 
+
 const formatNum = num => {
-  return Number(num.toFixed(0)).toLocaleString()
+  return Number(num.toFixed(2)).toLocaleString()
 }
 
 const formatNumberToTrillions = (number) => {
@@ -62,7 +63,7 @@ function Trending() {
 
   return (
     <div className="text-white">
-      <div className={styles.trendingWrapper} id="Wrapper">
+      <div className="sm:ml-[5rem] sm:mr-[5rem] mx-3">
           <h1 className={styles.h1}>Todays Top 10 Cryptocurrencies Prices by Market Cap</h1>
         
         <br />
@@ -89,7 +90,7 @@ function Trending() {
         <br />
 
         {showTrendingCards && (
-        <div className={`mb-10 ${styles.flexCenter}`}>
+        <div className={`mb-10 ${styles.flexCenter}` }>
           <TrendingCard cap={globalMarketCap} capChange={marketCapChange}/>
           <TrendingCard2 volume={totalVolume}/>
           <TrendingCard3 dominance={btcDominance} />

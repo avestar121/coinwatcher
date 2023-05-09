@@ -10,11 +10,6 @@
 
 body {
   background: linear-gradient(to bottom, #212430, #17171a);
-  min-height: 100vh; /* Use min-height instead of height */
-  width: 100%; /* Set width to 100% */
-}
-
-#Wrapper {
-  margin-right: 5em;
-  margin-left: 5em;
+  min-height: 100vh; 
+  width: 100%; 
 }

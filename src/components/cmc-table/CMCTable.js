@@ -30,7 +30,7 @@ const CMCTable = () => {
         }
     }, [getTopTenCoins])
   return (
-    <div style={{color: 'white', margin: 'auto 5rem', overflowX: 'auto', overflowY: 'hidden'}}>
+    <div className="sm:ml-[5rem] sm:mr-[5rem] mx-2" style={{color: 'white', overflowX: 'auto', overflowY: 'hidden'}}>
         <div className='mx-auto max-w-screen-2xl'>
             <table className='w-full'>
                 <CMCtableHeader />

@@ -16,7 +16,7 @@ const formatNum = (num) => {
   return '';
 };
 
-const TrendingCard = ({ icon, trendingData, cap, capChange }) => {
+const TrendingCard = ({cap, capChange }) => {
   const borderColor = capChange < 0 ? 'border-red-500' : 'border-green-500';
   const cardStyles = `${styles.trendingCard} ${borderColor}`;
 
@@ -27,7 +27,7 @@ const TrendingCard = ({ icon, trendingData, cap, capChange }) => {
           &nbsp;&nbsp;
           {cap !== null && capChange !== null && (
             <>
-              <p className="mr-1" style={{ fontSize: '1.2rem' }}>
+              <p className="mr-1 sm:text-xl text-sm ">
                 ${formatNum(cap)}
               </p>
               <Rate isIncrement={capChange > 0} rate={`${formatNum(capChange)}`} chevron={true} />

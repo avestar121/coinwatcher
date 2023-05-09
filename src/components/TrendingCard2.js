@@ -16,7 +16,7 @@ const formatNum = num => {
   };
   
 
-const TrendingCard = ({icon, volume}) => {
+const TrendingCard = ({volume}) => {
   return (
     <div className={styles.trendingCard}>
         <div className={styles.trendingCardWrapper}>
