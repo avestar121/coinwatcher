@@ -105,7 +105,7 @@ const CMCtableRow = ({
 
             <td>
                 <div>
-                    <p>{formatNum(volumeValue)}</p>
+                    <p>${formatNum(volumeValue)}</p>
                     <p className='text-gray-400'>
                         {formatNum(volumeCryptoValue)} {coinSymbol}
                     </p>

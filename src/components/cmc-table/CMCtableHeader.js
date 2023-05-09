@@ -85,7 +85,7 @@ const CMCtableHeader = () => {
               <Info />
             </div>
             {infoVolumeVisible && (
-              <div style={styles.infoWindow}>A measure of how much of a cryptocurrency was traded in the last 24 hours.</div>
+              <div style={styles.infoWindow}>A measure of how much of a cryptocurrency was traded.</div>
             )}
           </div>
         </th>
