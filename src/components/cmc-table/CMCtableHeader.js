@@ -68,7 +68,7 @@ const CMCtableHeader = () => {
               <Info />
             </div>
             {infoMarketVisible && (
-              <div style={styles.infoWindow}>The total market value of a cryptocurrency's circulating supply. It is analogous to the free-float capitalization in the stock market.
+              <div style={styles.infoWindow}>The total market value of a cryptocurrency circulating supply. It is analogous to the free-float capitalization in the stock market.
 
               Market Cap = Current Price x Circulating Supply.</div>
             )}
