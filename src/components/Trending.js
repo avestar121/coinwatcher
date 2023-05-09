@@ -14,7 +14,7 @@ const styles = {
 };
 
 const formatNum = num => {
-  return Number(num.toFixed(2)).toLocaleString()
+  return Number(num.toFixed(0)).toLocaleString()
 }
 
 const formatNumberToTrillions = (number) => {
