@@ -63,7 +63,6 @@ function AboutUSDC({rank, coinName, price, hRate, coinSymbol,coinData, }) {
                             })}
                       </div>
                     </div>
-                    {console.log(coinData)}
                     </div>
                     <div className={styles.detailsContainer}>
                         <div className={styles.flexColumn}>
