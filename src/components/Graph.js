@@ -8,8 +8,25 @@ import { LineController, TimeScale, LinearScale, LineElement, Tooltip } from 'ch
 Chart.register(LineController, TimeScale, LinearScale, LineElement, Tooltip);
 
 export default function Graph({symbol, activeTab}) {
+  const [canvasWidth, setCanvasWidth] = useState(750);
   const canvasRef = useRef(null);
   const [chart, setChart] = useState(null);
+
+  useEffect(() => {
+    const handleResize = () => {
+      const width = window.innerWidth;
+      setCanvasWidth(width < 750 ? width : 750);
+    };
+  
+    handleResize();
+  
+    window.addEventListener('resize', handleResize);
+  
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+  
 
   useEffect(() => {
     const apiUrl = 'https://api.binance.com/api/v3/klines';

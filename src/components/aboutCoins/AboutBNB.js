@@ -8,22 +8,22 @@ import {Rate} from '../cmc-table/Rate'
 
 
 const styles = {
-    activeTab: `p-1 px-2 mr-2 rounded-lg bg-[#171924]`,
-    infoBox: `p-1 px-2 mr-2 rounded-lg bg-[#2e2f39]`,
-    tabItem: `px-2`,
-    tabCointainer: `flex items-center p-2 rounded-xl bg-[#222531] border border-gray-500/10 text-sm`,
-    info: `min-h-screen`,
-    main: `text-white mx-20 max-w-screen-2xl`,
-    flexStart: `flex items-center justify-center`,
-    flexBetween: `flex justify-between`,
-    flexBetweenCenter: `flex justify-between items-center`,
-    tabContainerWrapper: `p-10 pl-0 pr-0 w-2/3`,
-    flexCenter: `flex items-center`,
-    bigDetailsContainer: `flex justify-between mb-20 `,
-    detailsContainer: `flex w-1/2`,
-    flexColumn: 'flex flex-col',
-    imageContainer: `w-9 h-9`,
-    detailsLine:`flex items-center my-1`
+  activeTab: `p-1 px-2 mr-2 rounded-lg bg-[#171924]`,
+  infoBox: `p-1 px-2 mr-2 rounded-lg bg-[#2e2f39]`,
+  tabItem: `px-2`,
+  tabCointainer: `flex items-center p-2 rounded-xl bg-[#222531] border border-gray-500/10 text-sm`,
+  info: `min-h-screen`,
+  main: `text-white sm:mx-20 mx-5 max-w-screen-2xl`,
+  flexStart: `flex sm:items-center sm:justify-center`,
+  flexBetween: `flex flex-col justify-between`,
+  flexBetweenCenter: `flex justify-between items-center`,
+  tabContainerWrapper: `p-10 pl-0 pr-0 sm:w-2/3`,
+  flexCenter: `flex items-center`,
+  bigDetailsContainer: `flex flex-col sm:flex-row justify-between mb-20 `,
+  detailsContainer: `flex w-1/2`,
+  flexColumn: 'flex flex-col',
+  imageContainer: `w-9 h-9`,
+  detailsLine:`flex items-center my-1`
 }
 
 function AboutBNB({rank, coinName, price, hRate, coinSymbol,coinData, }) {
@@ -59,7 +59,7 @@ function AboutBNB({rank, coinName, price, hRate, coinSymbol,coinData, }) {
                             <p className='text-[#6f7577] text-sm mt-8'>Tags:  </p>
                       </div>
                       <div className={styles.detailsLine}> 
-                            {coinData.tags.slice(0,4).map((tag, index) => {
+                            {coinData.tags.slice(0,3).map((tag, index) => {
                               return <p key={index} className='p-1 px-2 mr-2 rounded-lg bg-[#2e2f39] text-sm'>{tag}</p>
                             })}
                       </div>
@@ -93,7 +93,7 @@ function AboutBNB({rank, coinName, price, hRate, coinSymbol,coinData, }) {
                   <p className='mb-10'>{`The live ${coinName} price today is $${price.toFixed(2)} USD with a 24-hour trading volume of $${formatNum(coinData.quote.USD.volume_24h)} USD. We update our ${coinSymbol} to USD price in real-time. The current CoinWatcher ranking is #${rank}, with a live market cap of $${formatNum(coinData.quote.USD.market_cap)} USD. It has a circulating supply of ${formatNum(coinData.circulating_supply)} ${coinSymbol} coins and a max. supply of ${formatNum(coinData.total_supply)} ${coinSymbol} coins.
 
 If you would like to know where to buy ${coinName} at the current rate, the top cryptocurrency exchanges for trading in ${coinName} stock are currently Binance, OKX, Deepcoin, CoinW, and Bitrue. You can find others listed on our crypto exchanges page.`}</p>
-                    <div className={styles.flexBetween}>
+                    <div className={styles.flexBetween} style={{ width: '90%' }}>
                         <div className={styles.tabContainer}>
                             <p className={styles.tabItem}>{coinSymbol} Price chart</p>
                         </div>
@@ -105,9 +105,8 @@ If you would like to know where to buy ${coinName} at the current rate, the top 
                             <button className={activeTab === '1d' ? styles.activeTab : styles.tabItem} onClick={() => setActiveTab('1d')}>1d</button>
                             <button className={activeTab === '1M' ? styles.activeTab : styles.tabItem} onClick={() => setActiveTab('1M')}>1M</button>
                          </div>
+                         <Graph symbol={'BNBUSDT'} activeTab={activeTab}/>
                     </div>
-                    <br />
-                    <Graph symbol={'BNBUSDT'} activeTab={activeTab}/>
                     <br />
                     <p className="mb-3 font-bold" style={{ fontSize: '1.4rem' }}>What Is {coinName} ({coinSymbol})?</p>
                   <p className='mb-10'>{`Launched in July 2017, Binance is the biggest cryptocurrency exchange globally based on daily trading volume. Binance aims to bring cryptocurrency exchanges to the forefront of financial activity globally. The idea behind Binance's name is to show this new paradigm in global finance — Binary Finance, or Binance.

@@ -13,13 +13,13 @@ const styles = {
     tabItem: `px-2`,
     tabCointainer: `flex items-center p-2 rounded-xl bg-[#222531] border border-gray-500/10 text-sm`,
     info: `min-h-screen`,
-    main: `text-white mx-20 max-w-screen-2xl`,
-    flexStart: `flex items-center justify-center`,
-    flexBetween: `flex justify-between`,
+    main: `text-white sm:mx-20 mx-5 max-w-screen-2xl`,
+    flexStart: `flex sm:items-center sm:justify-center`,
+    flexBetween: `flex flex-col justify-between`,
     flexBetweenCenter: `flex justify-between items-center`,
-    tabContainerWrapper: `p-10 pl-0 pr-0 w-2/3`,
+    tabContainerWrapper: `p-10 pl-0 pr-0 sm:w-2/3`,
     flexCenter: `flex items-center`,
-    bigDetailsContainer: `flex justify-between mb-20 `,
+    bigDetailsContainer: `flex flex-col sm:flex-row justify-between mb-20 `,
     detailsContainer: `flex w-1/2`,
     flexColumn: 'flex flex-col',
     imageContainer: `w-9 h-9`,
@@ -93,7 +93,7 @@ function AboutBTC({rank, coinName, price, hRate, coinSymbol,coinData, }) {
                   <p className="mb-3 font-bold" style={{ fontSize: '1.4rem' }}>BTC Price Live Data</p>
                   <p className='mb-10'>{`The live Bitcoin price today is $${price.toFixed(2)} USD with a 24-hour trading volume of $${formatNum(coinData.quote.USD.volume_24h)} USD. The current CoinWatcher ranking is #${rank}, with a live market cap of $${formatNum(coinData.quote.USD.market_cap)} USD. It has a circulating supply of ${formatNum(coinData.circulating_supply)} BTC coins and a max. supply of 21,000,000 BTC coins.
 If you would like to know where to buy Bitcoin at the current rate, the top cryptocurrency exchanges for trading in Bitcoin stock are currently Binance, OKX, Deepcoin, CoinW, and Bitrue. You can find others listed on our crypto exchanges page.`}</p>
-                    <div className={styles.flexBetween}>
+                    <div className={styles.flexBetween} style={{ width: '90%' }}>
                         <div className={styles.tabContainer}>
                             <p className={styles.tabItem}>{coinSymbol} Price chart</p>
                         </div>
@@ -105,11 +105,12 @@ If you would like to know where to buy Bitcoin at the current rate, the top cryp
                             <button className={activeTab === '1d' ? styles.activeTab : styles.tabItem} onClick={() => setActiveTab('1d')}>1d</button>
                             <button className={activeTab === '1M' ? styles.activeTab : styles.tabItem} onClick={() => setActiveTab('1M')}>1M</button>
                          </div>
+                         <Graph symbol={'BTCUSDT'} activeTab={activeTab}/>
                     </div>
                     <br />
-                    <Graph symbol={'BTCUSDT'} activeTab={activeTab}/>
+                    
                     <br />
-                    <p className="mb-3 font-bold" style={{ fontSize: '1.4rem' }}>What Is Bitcoin (BTC)?</p>
+                    <p className="mb-3 font-bold" style={{ fontSize: '1.4rem'}}>What Is Bitcoin (BTC)?</p>
                   <p className='mb-10'>{`Bitcoin is a decentralized cryptocurrency originally described in a 2008 whitepaper by a person, or group of people, using the alias Satoshi Nakamoto. It was launched soon after, in January 2009.
 
 Bitcoin is a peer-to-peer online currency, meaning that all transactions happen directly between equal, independent network participants, without the need for any intermediary to permit or facilitate them. Bitcoin was created, according to Nakamoto’s own words, to allow “online payments to be sent directly from one party to another without going through a financial institution.”
