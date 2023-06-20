@@ -57,7 +57,7 @@ const Exchanges = () => {
         <h2 className="text-2xl sm:text-3xl text-white mt-6 sm:mt-10 mb-6 sm:mb-5">
           Top 10 Exchanges according to CoinWatcher
         </h2>
-        <p className='text-white'>As of today, we track top 10 crypto exchanges to provide you with the best possible experience!</p>
+        <p className='text-white'>As of today, we track top 5 crypto exchanges to provide you with the best possible experience!</p>
         <div className="flex items-center justify-between text-sm sm:text-base font-bold text-white mt-6 sm:mt-10 mb-3">
           <p style={{ width: '25%' }}>Name</p>
           <p style={{ width: '25%' }}>Trade Volume 24h</p>
