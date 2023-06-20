@@ -26,7 +26,7 @@ const styles = {
   detailsLine:`flex items-center my-1`
 }
 
-function AboutADA({rank, coinName, price, hRate, coinSymbol,coinData, }) {
+function AboutTRX({rank, coinName, price, hRate, coinSymbol,coinData, }) {
   const [activeTab, setActiveTab] = useState('1M');
 
 
@@ -131,7 +131,7 @@ If you would like to know where to buy Cardano at the current rate, the top cryp
                             <button className={activeTab === '1d' ? styles.activeTab : styles.tabItem} onClick={() => setActiveTab('1d')}>1d</button>
                             <button className={activeTab === '1M' ? styles.activeTab : styles.tabItem} onClick={() => setActiveTab('1M')}>1M</button>
                          </div>
-                         <Graph symbol={'ADAUSDT'} activeTab={activeTab}/>
+                         <Graph symbol={'TRXUSDT'} activeTab={activeTab}/>
                     </div>
                     <br />
                     <p className="mb-3 font-bold" style={{ fontSize: '1.4rem' }}>What Is Cardano (ADA)?</p>
@@ -160,4 +160,4 @@ Cardano is used by agricultural companies to track fresh produce from field to f
   )
 }
 
-export default AboutADA;
+export default AboutTRX;

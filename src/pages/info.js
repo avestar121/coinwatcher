@@ -1,5 +1,6 @@
 import React, {useState, useContext, useEffect,useCallback} from 'react'
 import AboutBTC from '../components/aboutCoins/AboutBTC'
+import AboutTRX from '../components/aboutCoins/AboutTRX'
 import AboutETH from '../components/aboutCoins/AboutETH'
 import AboutADA from '../components/aboutCoins/AboutADA'
 import AboutBNB from '../components/aboutCoins/AboutBNB'
@@ -66,6 +67,17 @@ const setData = useCallback(async () => {
             coinData.find(coin => coin.name === 'Ethereum')
         ) : (null)
         return <>{ethData && <AboutETH 
+            coinData={ethData} 
+            coinName={ethData.name} 
+            price = {ethData.quote.USD.price} 
+            hRate={ethData.quote.USD.percent_change_24h}
+            coinSymbol = {ethData.symbol}
+            rank ={ethData.cmc_rank}/>}</>
+    case 'Tron':
+        const trxData = coinData && coinData ? (
+            coinData.find(coin => coin.name === 'Tron')
+        ) : (null)
+        return <>{ethData && <AboutTRX 
             coinData={ethData} 
             coinName={ethData.name} 
             price = {ethData.quote.USD.price} 
