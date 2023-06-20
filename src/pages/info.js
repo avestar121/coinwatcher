@@ -77,13 +77,13 @@ const setData = useCallback(async () => {
         const trxData = coinData && coinData ? (
             coinData.find(coin => coin.name === 'TRON')
         ) : (null)
-        return <>{ethData && <AboutTRX 
-            coinData={ethData} 
-            coinName={ethData.name} 
-            price = {ethData.quote.USD.price} 
-            hRate={ethData.quote.USD.percent_change_24h}
-            coinSymbol = {ethData.symbol}
-            rank ={ethData.cmc_rank}/>}</>
+        return <>{trxData && <AboutTRX 
+            coinData={trxData} 
+            coinName={trxData.name} 
+            price = {trxData.quote.USD.price} 
+            hRate={trxData.quote.USD.percent_change_24h}
+            coinSymbol = {trxData.symbol}
+            rank ={trxData.cmc_rank}/>}</>
     case 'BNB':
         const bnbData = coinData && coinData ? (
             coinData.find(coin => coin.name === 'BNB')
