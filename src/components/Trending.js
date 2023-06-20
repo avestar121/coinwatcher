@@ -64,7 +64,7 @@ function Trending() {
   return (
     <div className="text-white">
       <div className="sm:ml-[5rem] sm:mr-[5rem] mx-3">
-          <h1 className={styles.h1}>Todays Top 5 Cryptocurrencies Prices by Market Cap</h1>
+          <h1 className={styles.h1}>Todays Top 10 Cryptocurrencies Prices by Market Cap</h1>
         
         <br />
         <div className="flex justify-between">
