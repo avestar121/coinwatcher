@@ -21,7 +21,7 @@ const CMCTable = () => {
 
             for(let i = 0; i < apiResponse.length; i++){
                 const element = apiResponse[i]
-                if(element.cmc_rank <= 5) filteredResponse.push(element)
+                if(element.cmc_rank <= 10) filteredResponse.push(element)
             }
 
             setCoinData(filteredResponse)
