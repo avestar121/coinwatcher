@@ -10,6 +10,7 @@ import cardano from '../../assets/cardano.png';
 import doge from '../../assets/dogecoin-doge-logo.png';
 import matic from '../../assets/matic-logo.webp';
 import solana from '../../assets/solana.png';
+import tron from '../../assets/tron-trx-logo.png';
 
 const styles = {
   coinNameRow: `flex items-center`,
@@ -102,6 +103,16 @@ const CoinNameRow = ({ name, icon, coinSymbol, clicked }) => {
         return (
           <Image
             src={matic}
+            className='rounded-full'
+            width={20}
+            height={20}
+            alt=''
+          />
+        );
+      case 'TRON':
+        return (
+          <Image
+            src={tron}
             className='rounded-full'
             width={20}
             height={20}

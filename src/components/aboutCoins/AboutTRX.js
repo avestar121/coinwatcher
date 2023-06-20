@@ -2,7 +2,7 @@ import React from 'react'
 import Header from '../Header'
 import { useEffect, useState } from 'react'
 import Graph from '../Graph'
-import ada from '../../assets/cardano.png'
+import tron from '../../assets/tron-trx-logo.png';
 import Image from 'next/image'
 import {Rate} from '../cmc-table/Rate'
 
@@ -72,7 +72,7 @@ const containerStyle = determineContainerStyle();
                     <div className={styles.flexColumn}>
                       <div className={styles.detailsLine}>
                         <div className={styles.imageContainer}>
-                          <Image src={ada} width="100%" height="100%"/>
+                          <Image src={tron} width="100%" height="100%"/>
                         </div>
                         <p className="ml-3 font-bold" style={{ fontSize: '2rem' }}>{coinName}</p>
                         <p className='p-1 px-2 mr-2 rounded-lg bg-[#2e2f39] ml-3'>{coinSymbol}</p>
@@ -115,10 +115,10 @@ const containerStyle = determineContainerStyle();
                         
                     </div>
                   </div>
-                  <p className="mb-3 font-bold" style={{ fontSize: '1.4rem' }}>ADA Price Live Data</p>
-                  <p className='mb-10'>{`The live Cardano price today is $${price.toFixed(2)} USD with a 24-hour trading volume of $${formatNum(coinData.quote.USD.volume_24h)} USD. We update our ADA to USD price in real-time. The current CoinWatcher ranking is #${rank}, with a live market cap of $${formatNum(coinData.quote.USD.market_cap)} USD. It has a circulating supply of ${formatNum(coinData.circulating_supply)} ADA coins and a max. supply of 45 000 000 000 ADA coins.
+                  <p className="mb-3 font-bold" style={{ fontSize: '1.4rem' }}>TRON Price Live Data</p>
+                  <p className='mb-10'>{`The live TRON price today is $${price.toFixed(2)} USD with a 24-hour trading volume of $${formatNum(coinData.quote.USD.volume_24h)} USD. We update our TRON to USD price in real-time. The current CoinWatcher ranking is #${rank}, with a live market cap of $${formatNum(coinData.quote.USD.market_cap)} USD. It has a circulating supply of ${formatNum(coinData.circulating_supply)} TRON coins and a max. supply is not available.
 
-If you would like to know where to buy Cardano at the current rate, the top cryptocurrency exchanges for trading in Cardano stock are currently Binance, OKX, Deepcoin, CoinW, and Bitrue. You can find others listed on our crypto exchanges page.`}</p>
+If you would like to know where to buy TRON at the current rate, the top cryptocurrency exchanges for trading in TRON stock are currently Binance, OKX, Deepcoin, CoinW, and Bitrue. You can find others listed on our crypto exchanges page.`}</p>
                     <div className={styles.flexBetween} style={{ width: '90%' }}>
                         <div className={styles.tabContainer}>
                             <p className={styles.tabItem}>{coinSymbol} Price chart</p>
@@ -134,20 +134,14 @@ If you would like to know where to buy Cardano at the current rate, the top cryp
                          <Graph symbol={'TRXUSDT'} activeTab={activeTab}/>
                     </div>
                     <br />
-                    <p className="mb-3 font-bold" style={{ fontSize: '1.4rem' }}>What Is Cardano (ADA)?</p>
-                  <p className='mb-10'>{`Cardano is a proof-of-stake blockchain platform that says its goal is to allow “changemakers, innovators and visionaries” to bring about positive global change.
+                    <p className="mb-3 font-bold" style={{ fontSize: '1.4rem' }}>What Is TRON (TRX)?</p>
+                  <p className='mb-10'>{`TRON (TRX) is a decentralized blockchain-based operating system developed by the Tron Foundation and launched in 2017. Originally TRX tokens were ERC-20-based tokens deployed on Ethereum, but a year later they were moved to their own network.
 
-To learn more about this project, check out our deep dive of Cardano.
+Initially, the project was created with the aim of providing full ownership rights to makers of digital content. The main goal is to help content creators (who receive only a small part of the income) and encourage them with more rewards for their work. How: invite content consumers to reward content makers directly (without intermediaries like YouTube, Facebook or Apple).
 
-The open-source project also aims to “redistribute power from unaccountable structures to the margins to individuals” — helping to create a society that is more secure, transparent and fair.
+The TRON software supports smart contracts, various kinds of blockchain systems, and decentralized applications aka dApps. The cryptocurrency platform uses a transaction model similar to Bitcoin (BTC), namely UTXO. Transactions take place in a public ledger, where users can track the history of operations.
 
-Cardano was founded back in 2017, and named after the 16th century Italian polymath Gerolamo Cardano. The native ADA token takes its name from the 19th century mathematician Ada Lovelace, widely regarded as the world’s first computer programmer. The ADA token is designed to ensure that owners can participate in the operation of the network. Because of this, those who hold the cryptocurrency have the right to vote on any proposed changes to the software.
-
-The team behind the layered blockchain say that there have already been some compelling use cases for its technology, which aims to allow decentralized apps and smart contracts to be developed with modularity.
-
-In August 2021, Charles Hoskinson announced the launch of the Alonzo hard fork, causing Cardano price to surge, gaining 116% in the following month. On Sept. 12, 2021, the Cardano ‘Alonzo’ hard fork officially launched, bringing smart contract functionality to the blockchain. Over 100 smart contracts were deployed in the following 24 hours after the launch.
-
-Cardano is used by agricultural companies to track fresh produce from field to fork, while other products built on the platform allow educational credentials to be stored in a tamper-proof way, and retailers to clamp down on counterfeit goods.`}</p>
+Therefore, the platform was built to create a decentralized Internet and serves as a tool for developers to create dApps, acting as an alternative to Ethereum. Anyone can create dApps on the TRON network, offer content, and in return receive digital assets as compensation for their efforts. The ability to create content and share it openly without hesitation regarding transaction fees is an undeniable advantage of TRON.`}</p>
                     
                 </div>
 
