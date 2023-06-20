@@ -73,9 +73,9 @@ const setData = useCallback(async () => {
             hRate={ethData.quote.USD.percent_change_24h}
             coinSymbol = {ethData.symbol}
             rank ={ethData.cmc_rank}/>}</>
-    case 'Tron':
+    case 'TRON':
         const trxData = coinData && coinData ? (
-            coinData.find(coin => coin.name === 'Tron')
+            coinData.find(coin => coin.name === 'TRON')
         ) : (null)
         return <>{ethData && <AboutTRX 
             coinData={ethData} 

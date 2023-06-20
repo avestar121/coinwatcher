@@ -50,7 +50,7 @@ const CMCtableRow = ({
         case 'Solana':
                 symbol = 'SOLUSDT';
                 break;
-        case 'Tron':
+        case 'TRON':
                 symbol = 'SOLUSDT';
                 break;
         case 'Litecoin':
