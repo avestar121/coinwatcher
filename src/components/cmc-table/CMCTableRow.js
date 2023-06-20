@@ -51,10 +51,10 @@ const CMCtableRow = ({
                 symbol = 'SOLUSDT';
                 break;
         case 'TRON':
-                symbol = 'SOLUSDT';
+                symbol = 'TRXUSDT';
                 break;
         case 'Litecoin':
-                symbol = 'SOLUSDT';
+                symbol = 'LTCUSDT';
                 break;
         default:
             symbol = 'USDCUSDT'; 
