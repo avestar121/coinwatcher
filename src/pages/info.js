@@ -10,6 +10,7 @@ import AboutSOL from '../components/aboutCoins/AboutSOL'
 import AboutUSDT from '../components/aboutCoins/AboutTether'
 import AboutUSDC from '../components/aboutCoins/AboutUSDC'
 import AboutXRP from '../components/aboutCoins/AboutXRP'
+import ErrorPage from '../components/aboutCoins/ErrorPage'
 import {CoinMarketContext} from '../contex/contex'
 
 
@@ -162,16 +163,7 @@ const setData = useCallback(async () => {
             coinSymbol = {usdtData.symbol}
             rank ={usdtData.cmc_rank}/>}</>
     default:
-        const usdcData = coinData && coinData ? (
-            coinData.find(coin => coin.name === 'USD Coin')
-        ) : (null)
-        return <>{usdcData && <AboutUSDC 
-            coinData={usdcData} 
-            coinName={usdcData.name} 
-            price = {usdcData.quote.USD.price} 
-            hRate={usdcData.quote.USD.percent_change_24h}
-            coinSymbol = {usdcData.symbol}
-            rank ={usdcData.cmc_rank}/>}</>
+        return <ErrorPage/>
 }
 }
 
